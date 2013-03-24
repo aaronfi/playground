@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;MyKata.Boggle&apos; to &apos;LevelOrderTreeConversion&apos;&#x0D;&#x0A;- Original project: &apos;2013.02.19 - level-order-tree-conversion&apos;&#x0D;&#x0A;- Original element: &apos;MyKata.Boggle&apos;&#x0D;&#x0A;- Renamed element: &apos;MyKata.LevelOrderTreeConversion&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Boggle&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;MyKata{Boggle.java[Boggle" matchStrategy="1" name="LevelOrderTreeConversion" qualified="false" references="true" similarDeclarations="false" stamp="1361306619283" textual="false" version="1.0"/>
+</session>

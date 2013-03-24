@@ -1,0 +1,96 @@
+package MyKata;
+
+import java.util.Arrays;
+
+// import java.util.List;
+
+public class MergeSort {
+
+//    public static void _ms(Integer[] c, int l, int r) {
+//        if (l >= r) return;
+//        int m = (l+r)/2;
+//        _ms(c,l,m);
+//        _ms(c,m+1,r);
+//        int ai = l, bi = m+1;
+//        while (ai < m && bi <= r) {
+//            if (c[ai] <= c[bi]) {
+//                bi++;
+//            } else {
+//                int t = c[ai];
+//                c[ai] = c[bi];
+//                c[bi] = t;
+//                ai++;
+//            }
+//        }
+//    }
+//    
+//    public static void ms(Integer[] c) {
+//        _ms(c, 0, c.length-1);
+//    }
+    
+//    public static int[] merge (int[] a, int[] b) {
+//        int[] c = new int[a.length + b.length];
+//        int ai=0, bi=0, ci=0;
+//        while (ai < a.length && bi < b.length) {
+//            if (a[ai] <= b[bi]) {
+//                c[ci] = a[ai];
+//                ai++;
+//            } else {
+//                c[ci] = b[bi];
+//                bi++;
+//            }
+//            ci++;
+//        }
+//        return c;
+//    }
+//    
+//    public static int[] ms(int[] c) {
+//        if (c.length <= 1) return c;
+//        int l=0, r=c.length-1;
+//        int m=(l+r)/2;
+//        
+//        return merge(ms(Arrays.copyOfRange(c, 0, m)), ms(Arrays.copyOfRange(c, m+1, c.length-1)));
+//    }
+//    
+//    public static void main(String[] args) {       
+//        int[] c = ms(new int[]  { 5, 1, 3, 9, 0 } );
+//        System.out.println(c);
+//    }	
+    
+    public static int[] merge(int[] a, int[] b) {
+        int[] c = new int[a.length + b.length];
+        int ai=0, bi=0, ci=0;
+        while (ai < a.length && bi < b.length) {
+            c[ci++] = (a[ai] <= b[bi]) ? a[ai++] : b[bi++];
+        }
+        if (ai == a.length) {
+            while (bi < b.length) {
+                c[ci++] = b[bi++];
+            }
+        } else {
+            while (ai < a.length) {
+                c[ci++] = a[ai++];
+            }
+        }
+        return c;
+    }
+    
+    public static int[] ms(int[] c) {
+        if (c.length <= 1) return c;
+        int l=0, r=c.length-1;
+        int m=(l+r)/2;
+        int[] a = Arrays.copyOfRange(c, 0, m);
+        int[] b = Arrays.copyOfRange(c, m, c.length);
+        System.out.println(l +" "+ m +" "+r);
+        a = ms(a);
+        b = ms(b);
+        return merge(a,b);        
+    }
+    
+    public static void main(String[] args) {
+        int a[] = new int[] { 10, 4, 2, -5, 9, 2, 1 };
+        a = ms(a);
+        
+        int z = 3;
+    }
+}

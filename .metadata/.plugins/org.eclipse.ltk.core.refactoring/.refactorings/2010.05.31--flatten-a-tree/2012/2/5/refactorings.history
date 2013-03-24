@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;TreeNode.java&apos; to &apos;MyKata.TestMaxSumLevelInATree.java&apos;&#x0D;&#x0A;- Original project: &apos;2010.05.31--flatten-a-tree&apos;&#x0D;&#x0A;- Destination element: &apos;MyKata.TestMaxSumLevelInATree.java&apos;&#x0D;&#x0A;- Original element: &apos;MyKata.TreeNode.java&apos;" description="Copy compilation unit" destination="=2012.02.02--max-sum-level-in-a-tree/src&lt;MyKata{TestMaxSumLevelInATree.java" element1="/src&lt;MyKata{TreeNode.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1328204634572" units="1" version="1.0"/>
+</session>

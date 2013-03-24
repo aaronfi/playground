@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;MyKata.MaximumSubsequenceSum&apos; to &apos;Interview&apos;&#x0D;&#x0A;- Original project: &apos;2013.03.01 - interview&apos;&#x0D;&#x0A;- Original element: &apos;MyKata.MaximumSubsequenceSum&apos;&#x0D;&#x0A;- Renamed element: &apos;MyKata.Interview&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;MaximumSubsequenceSum&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;MyKata{MaximumSubsequenceSum.java[MaximumSubsequenceSum" matchStrategy="1" name="Interview" qualified="false" references="true" similarDeclarations="false" stamp="1362171976123" textual="false" version="1.0"/>
+</session>

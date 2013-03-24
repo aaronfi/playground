@@ -1,0 +1,17 @@
+package MyKata;
+
+// import java.util.List;
+
+public class Blank {
+    public static void main(String[] args) {
+        Boolean b = Boolean.parseBoolean(null);
+        System.out.println("hi");
+        System.out.println(b);
+        
+        Object a = null;
+        if (null != a) {
+            System.out.println("oops");
+        }
+    }
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;2013.02.25 - stack-with-min-tracking&apos;" deleteContents="true" description="Delete resource &apos;2013.02.25 - stack-with-min-tracking&apos;" element1="/2013.02.25 - stack-with-min-tracking" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1361751383601"/>
+</session>

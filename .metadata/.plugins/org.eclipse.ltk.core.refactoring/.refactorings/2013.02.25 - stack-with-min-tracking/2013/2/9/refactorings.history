@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;MyKata.LevelOrderTreeConversion&apos; to &apos;StackWithMinTracking&apos;&#x0D;&#x0A;- Original project: &apos;2013.02.25 - stack-with-min-tracking&apos;&#x0D;&#x0A;- Original element: &apos;MyKata.LevelOrderTreeConversion&apos;&#x0D;&#x0A;- Renamed element: &apos;MyKata.StackWithMinTracking&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;LevelOrderTreeConversion&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;MyKata{LevelOrderTreeConversion.java[LevelOrderTreeConversion" matchStrategy="1" name="StackWithMinTracking" qualified="false" references="true" similarDeclarations="false" stamp="1361747971501" textual="false" version="1.0"/>
+</session>

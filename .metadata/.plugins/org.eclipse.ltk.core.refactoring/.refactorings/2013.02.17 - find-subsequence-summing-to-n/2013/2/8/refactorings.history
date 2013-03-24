@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;MyKata.CountConnectedNodes&apos; to &apos;FindSubsequenceSummingToN&apos;&#x0D;&#x0A;- Original project: &apos;2013.02.17 - find-subsequence-summing-to-n&apos;&#x0D;&#x0A;- Original element: &apos;MyKata.CountConnectedNodes&apos;&#x0D;&#x0A;- Renamed element: &apos;MyKata.FindSubsequenceSummingToN&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;CountConnectedNodes&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;MyKata{CountConnectedNodes.java[CountConnectedNodes" matchStrategy="1" name="FindSubsequenceSummingToN" qualified="false" references="true" similarDeclarations="false" stamp="1361166357939" textual="false" version="1.0"/>
+</session>

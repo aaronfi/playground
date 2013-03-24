@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;MyKata.MergeSort&apos; to &apos;CountConnectedNodes&apos;&#x0D;&#x0A;- Original project: &apos;2013.02.17 - count-connected-nodes&apos;&#x0D;&#x0A;- Original element: &apos;MyKata.MergeSort&apos;&#x0D;&#x0A;- Renamed element: &apos;MyKata.CountConnectedNodes&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;MergeSort&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;MyKata{MergeSort.java[MergeSort" matchStrategy="1" name="CountConnectedNodes" qualified="false" references="true" similarDeclarations="false" stamp="1361144872149" textual="false" version="1.0"/>
+</session>
