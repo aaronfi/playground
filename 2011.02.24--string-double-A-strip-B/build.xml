@@ -1,0 +1,28 @@
+<project name="StringDoubleAStripB" basedir="." default="run">
+    <property name="src.dir"     value="./eclipse/src/MyKata"/>
+    <property name="build.dir"   value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" />
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="MyKata.${ant.project.name}" fork="true">
+            <classpath path="${classes.dir}" />
+        </java>
+        <junit>
+            <classpath path="${classes.dir}" />
+            <test name="MyKata.Test${ant.project.name}">
+                <formatter type="plain" usefile="false" />
+            </test>
+        </junit> 
+
+        <antcall target="clean" />
+    </target>
+</project>
