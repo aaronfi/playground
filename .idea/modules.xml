@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/2010.05.31 - flatten-a-tree/2010.05.31 - flatten-a-tree.iml" filepath="$PROJECT_DIR$/2010.05.31 - flatten-a-tree/2010.05.31 - flatten-a-tree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2010.05.31 - longest-unique-words/2010.05.31 - longest-unique-words.iml" filepath="$PROJECT_DIR$/2010.05.31 - longest-unique-words/2010.05.31 - longest-unique-words.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2010.06.01 - shuffle-a-deck-of-cards/2010.06.01 - shuffle-a-deck-of-cards.iml" filepath="$PROJECT_DIR$/2010.06.01 - shuffle-a-deck-of-cards/2010.06.01 - shuffle-a-deck-of-cards.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2010.06.01 - string-all-permutations/2010.06.01 - string-all-permutations.iml" filepath="$PROJECT_DIR$/2010.06.01 - string-all-permutations/2010.06.01 - string-all-permutations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2010.06.10 - count-neighbors-in-a-grid/2010.06.10 - count-neighbors-in-a-grid.iml" filepath="$PROJECT_DIR$/2010.06.10 - count-neighbors-in-a-grid/2010.06.10 - count-neighbors-in-a-grid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2011.02.24 - string-double-A-strip-B/2011.02.24 - string-double-A-strip-B.iml" filepath="$PROJECT_DIR$/2011.02.24 - string-double-A-strip-B/2011.02.24 - string-double-A-strip-B.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2011.02.28 - merge-two-sorted-arrays/2011.02.28 - merge-two-sorted-arrays.iml" filepath="$PROJECT_DIR$/2011.02.28 - merge-two-sorted-arrays/2011.02.28 - merge-two-sorted-arrays.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2011.04.24 - longest-increasing-subsequence/2011.04.24 - longest-increasing-subsequence.iml" filepath="$PROJECT_DIR$/2011.04.24 - longest-increasing-subsequence/2011.04.24 - longest-increasing-subsequence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2011.05.12 - reverse-a-doubly-linked-list/2011.05.12 - reverse-a-doubly-linked-list.iml" filepath="$PROJECT_DIR$/2011.05.12 - reverse-a-doubly-linked-list/2011.05.12 - reverse-a-doubly-linked-list.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2013.02.17 - count-connected-nodes/2013.02.17 - count-connected-nodes.iml" filepath="$PROJECT_DIR$/2013.02.17 - count-connected-nodes/2013.02.17 - count-connected-nodes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2013.02.17 - find-subsequence-summing-to-n/2013.02.17 - find-subsequence-summing-to-n.iml" filepath="$PROJECT_DIR$/2013.02.17 - find-subsequence-summing-to-n/2013.02.17 - find-subsequence-summing-to-n.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2013.02.18 - Boggle/2013.02.18 - Boggle.iml" filepath="$PROJECT_DIR$/2013.02.18 - Boggle/2013.02.18 - Boggle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2013.02.19 - level-order-tree-conversion/2013.02.19 - level-order-tree-conversion.iml" filepath="$PROJECT_DIR$/2013.02.19 - level-order-tree-conversion/2013.02.19 - level-order-tree-conversion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2013.02.24 - sentence-word-reversals/2013.02.24 - sentence-word-reversals.iml" filepath="$PROJECT_DIR$/2013.02.24 - sentence-word-reversals/2013.02.24 - sentence-word-reversals.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2013.02.27 - maximum-subsequence-sum/2013.02.27 - maximum-subsequence-sum.iml" filepath="$PROJECT_DIR$/2013.02.27 - maximum-subsequence-sum/2013.02.27 - maximum-subsequence-sum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2014.06.02 - histogram-fill-with-water/2014.06.02 - histogram-fill-with-water.iml" filepath="$PROJECT_DIR$/2014.06.02 - histogram-fill-with-water/2014.06.02 - histogram-fill-with-water.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2014.07.04 - url-normalizer/2014.07.04 - url-normalizer.iml" filepath="$PROJECT_DIR$/2014.07.04 - url-normalizer/2014.07.04 - url-normalizer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blank/2014.07.05 - fill-histogram-with-water/blank.iml" filepath="$PROJECT_DIR$/blank/2014.07.05 - fill-histogram-with-water/blank.iml" />
+    </modules>
+  </component>
+</project>
+

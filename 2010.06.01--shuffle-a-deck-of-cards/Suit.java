@@ -1,1 +1,0 @@
-./eclipse/src/MyKata/Suit.java

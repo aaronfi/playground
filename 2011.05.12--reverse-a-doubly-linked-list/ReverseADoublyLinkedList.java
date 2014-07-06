@@ -1,1 +1,0 @@
-./eclipse/src/MyKata/ReverseADoublyLinkedList.java
