@@ -3,8 +3,8 @@ package CodingKata;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class CardDeckTest {
-    
+public class CardDeckTest
+{
     @Test
     public void test() { 
     	Deck deck = new Deck();

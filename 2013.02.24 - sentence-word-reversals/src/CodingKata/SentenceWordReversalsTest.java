@@ -3,8 +3,8 @@ package CodingKata;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class SentenceWordReversalsTest {
-    
+public class SentenceWordReversalsTest
+{
     @Test 
     public void test() { 
         assertEquals(SentenceWordReversals.reverseEachWord("Hello how Are you"), "olleH woh erA uoy");

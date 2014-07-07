@@ -8,7 +8,8 @@ package CodingKata;
 //
 // I apply the Factory pattern here so I can try out multiple solutions.
 
-public class NeighborCount {
+public class NeighborCount
+{
     public enum Solutions {
         TryCatch,
         BoundaryCheck1,
@@ -43,6 +44,7 @@ public class NeighborCount {
             default:
                 throw new RuntimeException("Programming error, default case should never occur.");
         }
+
         return count;
     }
 

@@ -3,8 +3,8 @@ package CodingKata;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class LongestUniqueWordsTest {
-    
+public class LongestUniqueWordsTest
+{
     @Test public void test() { 
         assertArrayEquals( new String[] {"abc"},     LongestUniqueWords.count("abc de") );
         assertArrayEquals( new String[] {"abc"},     LongestUniqueWords.count("abc de de de de de") );

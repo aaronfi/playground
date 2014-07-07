@@ -44,14 +44,9 @@ public class MaximumSubsequenceSum {
                     bestKnownEndIndex = endIndex;
                 }
             }
-   
         }
         
         // { startIndex of maximal-summing subsequence, endIndex, the sum itself }
         return new int[] { bestKnownStartIndex, bestKnownEndIndex, bestKnownSum };
-    }
-    
-    public static void main(String[] args) {        
-        System.out.println(Arrays.toString( find(new int[]{1, 2, 3, 4, 5}) ));
     }
 }

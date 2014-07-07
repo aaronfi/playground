@@ -5,11 +5,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class LevelOrderTreeConversion {
-    
+public class LevelOrderTreeConversion
+{
     public static class Node {
         public Node left, right;
         public int value;
+
         public Node(int value) {
             this.value = value;
             this.left = this.right = null;
@@ -48,18 +49,5 @@ public class LevelOrderTreeConversion {
         }
 
         return all;
-    }
-    
-    
-    public static void main(String[] args) {        
-        Node root = new Node(8, new Node(5, new Node(2), new Node(6)), new Node(14, new Node(13), new Node(17)));
-        List<List<Node>> all = process(root);
-        for(List<Node> list : all) {
-            System.out.print("[");
-            for(Node n: list) {
-                System.out.print(n.value + ",");
-            }
-            System.out.println("]");
-        }
     }
 }

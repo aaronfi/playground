@@ -4,18 +4,30 @@ import java.util.*;
 
 public class WordLadder
 {
-    public class Node {
+    public static class Node {
         public String word;
-        public Set<Node> neighbors;
+
+        public SortedMap<String, Node> neighbors;
 
         public Node(String word) {
             this.word = word;
-            this.neighbors = new HashSet<Node>();
+            this.neighbors = new TreeMap<String, Node>();
         }
 
         @Override
         public String toString() {
-            return this.word;
+            StringBuilder builder = new StringBuilder();
+            builder.append(this.word);
+            builder.append(":[");
+
+            for(String neighbor : neighbors.keySet()) {
+                builder.append(neighbor);
+                builder.append(",");
+            }
+            builder.deleteCharAt(builder.length()-1);
+            builder.append("]");
+
+            return builder.toString();
         }
 
         @Override
@@ -25,9 +37,17 @@ public class WordLadder
 
             Node node = (Node) o;
 
-            if (!word.equals(node.word)) return false;
+            if (!word.equals(node.word)) {
+                return false;
+            }
 
-            return true;
+            if (neighbors == null && node.neighbors == null) {
+                return true;
+            } else if (neighbors != null && node.neighbors != null) {
+                return neighbors.toString().equals(node.neighbors.toString());
+            } else {
+                return false;
+            }
         }
 
         @Override
@@ -42,34 +62,46 @@ public class WordLadder
         return dictionary.contains(word);
     }
 
-    public Set<Node> GenerateGraph(String startingWord) {
-        Set<Node> nodes = new HashSet<Node>();
-        Queue<Node> working = new LinkedList<Node>();
+    public Node[] GenerateGraph(String startingWord) {
+        SortedMap<String, Node> nodes = new TreeMap<String, Node>();
 
-        Node start = new Node(startingWord);
-        working.add(start);
+        Set<String> visited = new HashSet<String>();
+        Queue<String> working = new LinkedList<String>();
+
+        working.add(startingWord);
+
         while (!working.isEmpty()) {
-            Node next = working.remove();
-            nodes.add(next);
+            String currentWord = working.remove();
 
-            for(Node n : GenerateNeighbors(next)) {
+            visited.add(currentWord);
 
-                // create an between the two nodes
-                n.neighbors.add(next);
-                next.neighbors.add(n);
+            Node currentNode = new Node(currentWord);
+            nodes.put(currentWord, currentNode);
 
-                if (!nodes.contains(n)) {
-                    working.add(n);
+            for(String neighbor : GenerateNeighbors(currentWord)) {
+
+                if (visited.contains(neighbor)) {  // then create two edges between the two nodes
+                    Node neighborNode = nodes.get(neighbor);
+
+                    neighborNode.neighbors.put(currentWord, currentNode);
+                    currentNode.neighbors.put(neighbor, neighborNode);
+                } else {
+                    working.add(neighbor);
                 }
             }
         }
 
-        return nodes;
+        Node[] values = new Node[nodes.size()];
+        int index = 0;
+        for (Map.Entry<String, Node> entry : nodes.entrySet()) {
+            values[index++] = entry.getValue();
+        }
+
+        return values;
     }
 
-    public List<Node> GenerateNeighbors(Node node) {
-        String word = node.word;
-        List<Node> results = new ArrayList<Node>();
+    public List<String> GenerateNeighbors(String word) {
+        List<String> results = new ArrayList<String>();
 
         for(int i=0; i<word.length(); i++) {
             char curr = word.charAt(i);
@@ -81,18 +113,11 @@ public class WordLadder
                 temp[i] = j;
                 String newWord = String.valueOf(temp);
                 if (isValidWord(newWord)) {
-                    results.add(new Node(newWord));
+                    results.add(newWord);
                 }
             }
         }
 
         return results;
-    }
-
-    public static void main(String[] args) {
-        WordLadder ladder = new WordLadder();
-        Set<Node> graph = ladder.GenerateGraph("junk");
-
-        System.out.println(graph);
     }
 }

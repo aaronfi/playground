@@ -3,7 +3,8 @@ package CodingKata;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class NeighborCountTest {
+public class NeighborCountTest
+{
    @Test
    public void test() {
        Boolean[][] board = new Boolean[][] {

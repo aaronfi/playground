@@ -3,7 +3,8 @@ package CodingKata;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class StringDoubleAStripBTest {
+public class StringDoubleAStripBTest
+{
     @Test public void test() { 
     	assertEquals(StringDoubleAStripB.doIt("abxyba"),                 "aaxyaa");
         assertEquals(StringDoubleAStripB.doIt("bbbb"),                   "----");
