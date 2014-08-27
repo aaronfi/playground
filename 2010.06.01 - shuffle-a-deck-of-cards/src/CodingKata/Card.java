@@ -25,4 +25,4 @@ public class Card
     public int hashCode() {
         return (this.getRank().ordinal() + 1) * 100 + (this.getSuit().ordinal() + 1);
     }
-}
+} 
