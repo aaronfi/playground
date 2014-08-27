@@ -40,7 +40,7 @@ public class StringDoubleAStripB {
                 arr[nextChar--] = 'a';
             }
         }
-        
-        return new StringBuilder().append(arr).toString();
+
+        return new String(arr);
     }
 }
