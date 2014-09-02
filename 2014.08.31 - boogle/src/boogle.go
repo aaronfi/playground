@@ -151,7 +151,7 @@ func _process(letters string, curr int, visited [16]bool, prefix string, results
     
     for _, i := range board[curr] {
         if ! visited[i] { 
-            //visited[i] = true
+            visited[i] = true
             _process(letters, i, visited, prefix + string(letters[i]), results)
         }
     } 
