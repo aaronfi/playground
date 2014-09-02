@@ -1,16 +1,15 @@
 package main
 
 import (
-    "fmt"
-    "os"
-    "log"
     "bufio"
+    "fmt"
+    "log"
+    "os"
     "sort"
     "sync"
 )
 
 // poor man's Trie, for use in our dictionary lookups
-
 type Node struct {
     isWord bool
     children map[rune]Node
@@ -28,9 +27,9 @@ func (n Node) Add(word string) {
 
     }
 }
-func (n Node) IsWord(word string) bool {
+func (n Node) IsWord(candidate string) bool {
     curr := n
-    for _, c := range word {
+    for _, c := range candidate {
         _, found := curr.children[c]
 
         if found {
@@ -42,9 +41,9 @@ func (n Node) IsWord(word string) bool {
 
     return curr.isWord
 }
-func (n Node) IsWordPrefix(prefix string) bool {
+func (n Node) IsWordPrefix(candidate string) bool {
     curr := n
-    for _, c := range prefix {
+    for _, c := range candidate {
         _, found := curr.children[c]
 
         if found {
@@ -57,58 +56,112 @@ func (n Node) IsWordPrefix(prefix string) bool {
     return len(curr.children) > 0
 }
 
-var dict = func() Node {
-    n := Node{ false, make(map[rune]Node) }
+type Boogle struct {
+    wg sync.WaitGroup    
 
-    file, err := os.Open("words.txt")
-    if err != nil {
-        log.Fatal(err)
-    }
-    defer file.Close()
+    dict Node
+    board [][]int
+    words map[string]bool
+    
+}
+func (b Boogle) IsLegalWord(word string) bool {
+    return len(word) >= 3 && b.dict.IsWord(word)
+}
+func (b Boogle) IsLegalWordPrefix(prefix string) bool {
+    return b.dict.IsWordPrefix(prefix)
+}
+func (b Boogle) _solve(letters string, curr int, visited [16]bool, candidate string, wg *sync.WaitGroup) {
+    defer wg.Done()
 
-    scanner := bufio.NewScanner(file)
-    for scanner.Scan() {
-        n.Add(scanner.Text())
+    if ! b.IsLegalWordPrefix(candidate) {
+        return
     }
  
-    if err := scanner.Err(); err != nil {
-        log.Fatal(err)
-    }
+    if b.IsLegalWord(candidate) {
+        b.words[candidate] = true
+    }   
+
+    visited[curr] = true
  
-    return n 
+    for _, i := range b.board[curr] {
+        if ! visited[i] { 
+            visited[i] = true
+
+            wg.Add(1)
+            go b._solve(letters, i, visited, candidate + string(letters[i]), wg)
+        }
+    }
+} 
+func (b Boogle) Solve(letters string) []string {
+    b.words = make(map[string]bool)
+
+    var wg sync.WaitGroup
+
+    for i, _ := range b.board {
+        wg.Add(1)
+        go b._solve(letters, i, [16]bool{}, string(letters[i]), &wg)
+    }
+    wg.Wait()
+ 
+    // sort our found words
+    var keys []string
+    for k := range b.words {
+        keys = append(keys, k)
+    }
+    sort.Strings(keys)
+
+    return keys
+}
+
+var BoogleGame = func() *Boogle {
+    boogle := Boogle{}
+
+    //   0  1  2  3
+    //   4  5  6  7
+    //   8  9 10 11
+    //  12 13 14 15
+    boogle.board = [][]int {  // denotes adjacent neighbors from a given cell number
+        []int { 1, 4, 5 },
+        []int { 0, 2, 4, 5, 6 },
+        []int { 1, 3, 5, 6, 7 },
+        []int { 2, 6, 7 },
+        []int { 0, 1, 5, 8, 9 },
+        []int { 0, 1, 2, 4, 6, 8, 9, 10 },
+        []int { 1, 2, 3, 5, 7, 9, 10, 11 },
+        []int { 2, 3, 6, 10, 11 },
+        []int { 4, 5, 9, 12, 13 },
+        []int { 4, 5, 6, 8, 10, 12, 13, 14 },
+        []int { 5, 6, 7, 9, 11, 13, 14, 15 },
+        []int { 6, 7, 10, 14, 15 },
+        []int { 8, 9, 13 },
+        []int { 8, 9, 10, 12, 14 },
+        []int { 9, 10, 11, 13, 15 },
+        []int { 10, 11, 14 },
+    }
+
+    boogle.dict = func() Node {
+        n := Node{ false, make(map[rune]Node) }
+
+        file, err := os.Open("words.txt")
+        if err != nil {
+            log.Fatal(err)
+        }
+        defer file.Close()
+
+        scanner := bufio.NewScanner(file)
+        for scanner.Scan() {
+            n.Add(scanner.Text())
+        }
+     
+        if err := scanner.Err(); err != nil {
+            log.Fatal(err)
+        }
+     
+        return n 
+    }()
+
+    return &boogle
 }()
-
-func IsLegalWord(word string) bool {
-    return len(word) >= 3 && dict.IsWord(word)
-}
-
-func IsLegalWordPrefix(prefix string) bool {
-    return dict.IsWordPrefix(prefix)
-}
-
-//   0  1  2  3
-//   4  5  6  7
-//   8  9 10 11
-//  12 13 14 15
-
-var board = [][]int {  // denotes adjacent neighbors from a given cell number
-    []int { 1, 4, 5 },
-    []int { 0, 2, 4, 5, 6 },
-    []int { 1, 3, 5, 6, 7 },
-    []int { 2, 6, 7 },
-    []int { 0, 1, 5, 8, 9 },
-    []int { 0, 1, 2, 4, 6, 8, 9, 10 },
-    []int { 1, 2, 3, 5, 7, 9, 10, 11 },
-    []int { 2, 3, 6, 10, 11 },
-    []int { 4, 5, 9, 12, 13 },
-    []int { 4, 5, 6, 8, 10, 12, 13, 14 },
-    []int { 5, 6, 7, 9, 11, 13, 14, 15 },
-    []int { 6, 7, 10, 14, 15 },
-    []int { 8, 9, 13 },
-    []int { 8, 9, 10, 12, 14 },
-    []int { 9, 10, 11, 13, 15 },
-    []int { 10, 11, 14 },
-}
 
 func printBoard(visited [16]bool) {
     if (visited[0])  { fmt.Print("X") } else { fmt.Print(".") }
@@ -134,70 +187,21 @@ func printBoard(visited [16]bool) {
     fmt.Println()
 }
 
-
-func _process(letters string, curr int, visited [16]bool, prefix string, results map[string]bool, wg *sync.WaitGroup) {
-    if ! IsLegalWordPrefix(prefix) {
-        wg.Done()
-        return
-    }
- 
-    if IsLegalWord(prefix) {
-        results[prefix] = true
-    }   
-
-    visited[curr] = true
- 
-   // printBoard(visited)
-    
-    for _, i := range board[curr] {
-        if ! visited[i] { 
-            visited[i] = true
-
-            wg.Add(1)
-            go _process(letters, i, visited, prefix + string(letters[i]), results, wg)
-        }
-    }
-
-    wg.Done() 
-} 
-
-func process(letters string) []string {
-    results := make(map[string]bool)
-    var wg sync.WaitGroup
-
-    for i, _ := range board {
-        wg.Add(1)
-        _process(letters, i, [16]bool{}, string(letters[i]), results, &wg)
-    }
-    wg.Wait()
- 
-    var keys []string
-    for k := range results {
-        keys = append(keys, k)
-    }
-    sort.Strings(keys)
-
-    return keys
-}
-
 func main() {
-/*
-    fmt.Println(process("cat............."))
-    fmt.Println(process(".cat............"))
-    fmt.Println(process("..cat..........."))
-    fmt.Println(process("...cat.........."))
-*/
-fmt.Println(
-process("dghiklpsyeuteorn"))
-//    fmt.Println(process("....cat........."))
-/*    fmt.Println(process(".....cat........"))
-    fmt.Println(process("......cat......."))
-    fmt.Println(process(".......cat......"))
-    fmt.Println(process("........cat....."))
-    fmt.Println(process(".........cat...."))
-    fmt.Println(process("..........cat..."))
-    fmt.Println(process("...........cat.."))
-    fmt.Println(process("............cat."))
-    fmt.Println(process(".............cat"))
-*/
+
+    fmt.Println(BoogleGame.Solve("cat............."))
+    fmt.Println(BoogleGame.Solve(".cat............"))
+    fmt.Println(BoogleGame.Solve("..cat..........."))
+    fmt.Println(BoogleGame.Solve("...cat.........."))
+    fmt.Println(BoogleGame.Solve("....cat........."))
+    fmt.Println(BoogleGame.Solve(".....cat........"))
+    fmt.Println(BoogleGame.Solve("......cat......."))
+    fmt.Println(BoogleGame.Solve(".......cat......"))
+    fmt.Println(BoogleGame.Solve("........cat....."))
+    fmt.Println(BoogleGame.Solve(".........cat...."))
+    fmt.Println(BoogleGame.Solve("..........cat..."))
+    fmt.Println(BoogleGame.Solve("...........cat.."))
+    fmt.Println(BoogleGame.Solve("............cat."))
+    fmt.Println(BoogleGame.Solve(".............cat"))
+
 }
