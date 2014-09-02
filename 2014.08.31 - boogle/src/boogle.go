@@ -6,6 +6,7 @@ import (
     "log"
     "bufio"
     "sort"
+    "sync"
 )
 
 // poor man's Trie, for use in our dictionary lookups
@@ -134,8 +135,9 @@ func printBoard(visited [16]bool) {
 }
 
 
-func _process(letters string, curr int, visited [16]bool, prefix string, results map[string]bool) {
+func _process(letters string, curr int, visited [16]bool, prefix string, results map[string]bool, wg *sync.WaitGroup) {
     if ! IsLegalWordPrefix(prefix) {
+        wg.Done()
         return
     }
  
@@ -146,23 +148,28 @@ func _process(letters string, curr int, visited [16]bool, prefix string, results
     visited[curr] = true
  
    // printBoard(visited)
-
-   // TODO (1) add the prefix optimization, (2) double check that you need to set visited[curr] = true, (3) apply go's deferment for speed up -- measure said speed up
     
     for _, i := range board[curr] {
         if ! visited[i] { 
             visited[i] = true
-            _process(letters, i, visited, prefix + string(letters[i]), results)
+
+            wg.Add(1)
+            go _process(letters, i, visited, prefix + string(letters[i]), results, wg)
         }
-    } 
+    }
+
+    wg.Done() 
 } 
 
 func process(letters string) []string {
     results := make(map[string]bool)
+    var wg sync.WaitGroup
 
     for i, _ := range board {
-        _process(letters, i, [16]bool{}, string(letters[i]), results)
+        wg.Add(1)
+        _process(letters, i, [16]bool{}, string(letters[i]), results, &wg)
     }
+    wg.Wait()
  
     var keys []string
     for k := range results {
