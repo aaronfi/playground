@@ -93,6 +93,10 @@ func (b Boogle) _solve(letters string, curr int, visited [16]bool, candidate str
     }
 } 
 func (b Boogle) Solve(letters string) []string {
+    if len(letters) != 16 {
+        return nil 
+    }
+
     b.words = make(map[string]bool)
 
     var wg sync.WaitGroup
@@ -163,32 +167,8 @@ var BoogleGame = func() *Boogle {
     return &boogle
 }()
 
-func printBoard(visited [16]bool) {
-    if (visited[0])  { fmt.Print("X") } else { fmt.Print(".") }
-    if (visited[1])  { fmt.Print("X") } else { fmt.Print(".") }
-    if (visited[2])  { fmt.Print("X") } else { fmt.Print(".") }
-    if (visited[3])  { fmt.Println("X") } else { fmt.Println(".") }
-
-    if (visited[4])  { fmt.Print("X") } else { fmt.Print(".") }
-    if (visited[5])  { fmt.Print("X") } else { fmt.Print(".") }
-    if (visited[6])  { fmt.Print("X") } else { fmt.Print(".") }
-    if (visited[7])  { fmt.Println("X") } else { fmt.Println(".") }
-
-    if (visited[8])  { fmt.Print("X") } else { fmt.Print(".") }
-    if (visited[9])  { fmt.Print("X") } else { fmt.Print(".") }
-    if (visited[10]) { fmt.Print("X") } else { fmt.Print(".") }
-    if (visited[11]) { fmt.Println("X") } else { fmt.Println(".") }
-
-    if (visited[12]) { fmt.Print("X") } else { fmt.Print(".") }
-    if (visited[13]) { fmt.Print("X") } else { fmt.Print(".") }
-    if (visited[14]) { fmt.Print("X") } else { fmt.Print(".") }
-    if (visited[15]) { fmt.Println("X") } else { fmt.Println(".") }
-    
-    fmt.Println()
-}
-
 func main() {
-
+    fmt.Println(BoogleGame.Solve("dghiklpsyeuteorn"))
     fmt.Println(BoogleGame.Solve("cat............."))
     fmt.Println(BoogleGame.Solve(".cat............"))
     fmt.Println(BoogleGame.Solve("..cat..........."))
@@ -204,4 +184,5 @@ func main() {
     fmt.Println(BoogleGame.Solve("............cat."))
     fmt.Println(BoogleGame.Solve(".............cat"))
 
+    fmt.Println(BoogleGame.Solve("malformed_board_wrong_size"))
 }

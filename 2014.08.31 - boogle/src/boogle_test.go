@@ -38,4 +38,6 @@ func TestBoogle(t *testing.T) {
     assert(t, []string {       }, BoogleGame.Solve("...........cat.."))
     assert(t, []string { "cat" }, BoogleGame.Solve("............cat."))
     assert(t, []string { "cat" }, BoogleGame.Solve(".............cat"))
+
+    assert(t, []string {}, BoogleGame.Solve("malformed board wrong size"))
 }
