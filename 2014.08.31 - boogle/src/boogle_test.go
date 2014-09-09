@@ -8,7 +8,7 @@ import (
 func TestBoogle(t *testing.T) {
     var assert = func(t *testing.T, expected []string, actual []string) {
         if ! (len(expected) == len(actual) || reflect.DeepEqual(expected, actual)) {
-            t.Error("mismatch: expected output ")
+            t.Error("mismatch between expected and actual")
         } 
     }
 
